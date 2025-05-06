@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTN Manufacturing | Premium Concrete Blocks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Header -->
+<header id="header">
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo">BTN<span>MFG</span></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Precision-Engineered Concrete Blocks</h1>
+            <p class="subtitle">Building Rwanda's future with superior quality and innovative solutions</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn primary-btn">Explore Products</a>
+                <a href="#calculator" class="btn secondary-btn">Quantity Calculator</a>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-down">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="products-section" id="products">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Block Products</h2>
+            <p>Engineered for durability and performance</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Standard Blocks">
+                </div>
+                <div class="product-info">
+                    <h3>Standard Blocks</h3>
+                    <div class="specs">
+                        <span><i class="fas fa-ruler"></i> 400x200mm</span>
+                        <span><i class="fas fa-weight-hanging"></i> 18-22kg</span>
+                    </div>
+                    <p>Perfect for load-bearing walls with superior compressive strength.</p>
+                    <a href="#calculator" class="btn outline-btn">Calculate Quantity</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hollow Blocks">
+                </div>
+                <div class="product-info">
+                    <h3>Hollow Blocks</h3>
+                    <div class="specs">
+                        <span><i class="fas fa-ruler"></i> 400x200mm</span>
+                        <span><i class="fas fa-weight-hanging"></i> 12-15kg</span>
+                    </div>
+                    <p>Lightweight with excellent thermal and sound insulation properties.</p>
+                    <a href="#calculator" class="btn outline-btn">Calculate Quantity</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Paving Blocks">
+                </div>
+                <div class="product-info">
+                    <h3>Paving Blocks</h3>
+                    <div class="specs">
+                        <span><i class="fas fa-ruler"></i> 200x100mm</span>
+                        <span><i class="fas fa-weight-hanging"></i> 4-6kg</span>
+                    </div>
+                    <p>Durable and attractive solutions for driveways and walkways.</p>
+                    <a href="#calculator" class="btn outline-btn">Calculate Quantity</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Calculator Section -->
+<section class="calculator-section" id="calculator">
+    <div class="container">
+        <div class="section-header">
+            <h2>Block Quantity Calculator</h2>
+            <p>Estimate materials needed for your project</p>
+        </div>
+        <div class="calculator-container">
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="block-type">Block Type</label>
+                    <select id="block-type">
+                        <option value="standard">Standard Block</option>
+                        <option value="hollow">Hollow Block</option>
+                        <option value="paving">Paving Block</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="wall-length">Wall Length (m)</label>
+                    <input type="number" id="wall-length" value="10" min="0.1" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label for="wall-height">Wall Height (m)</label>
+                    <input type="number" id="wall-height" value="2.5" min="0.1" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label for="waste-factor">Waste Factor (%)</label>
+                    <input type="number" id="waste-factor" value="10" min="0" max="100">
+                </div>
+                <button id="calculate-btn" class="btn primary-btn">Calculate</button>
+            </div>
+            <div class="calculator-results">
+                <h3>Estimation Results</h3>
+                <div class="result-item">
+                    <span>Block Type:</span>
+                    <span id="result-type">Standard Block</span>
+                </div>
+                <div class="result-item">
+                    <span>Wall Area:</span>
+                    <span id="result-area">25 m²</span>
+                </div>
+                <div class="result-item">
+                    <span>Blocks Needed:</span>
+                    <span id="result-blocks">313</span>
+                </div>
+                <div class="result-item">
+                    <span>Including Waste:</span>
+                    <span id="result-total">344 blocks</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <div class="section-header">
+                    <h2>About BTN Manufacturing</h2>
+                    <p>Precision. Quality. Innovation.</p>
+                </div>
+                <p>Since 2010, BTN Manufacturing has been at the forefront of concrete block production in Rwanda. Our commitment to quality and innovation has made us the preferred choice for builders and contractors nationwide.</p>
+                <p>Using state-of-the-art German manufacturing technology, we produce blocks with consistent quality and precise dimensions that meet international standards.</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">12,000+</span>
+                        <span class="stat-label">Blocks Daily</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Client Retention</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a0a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="BTN Manufacturing Facility">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>SHOOT US A MESSAGE</h2>
+                <p class="subtitle">Let's bring your vision to life.</p>
+                <div class="address">
+                    <p>123, avenue</p>
+                    <p>Kigali, Rwanda</p>
+                    <p>94401</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="message-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Name *" required>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email *" required>
+                            <div class="underline"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Subject">
+                        <div class="underline"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Message" required></textarea>
+                        <div class="underline"></div>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> BTN Manufacturing. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
