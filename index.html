@@ -1,98 +1,265 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTN Manufacturing | Premium Concrete Blocks</title>
+    <title>BTN Group | Manufacturing & Logistics Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="loader"></div>
+</div>
+
 <!-- Header -->
-<header id="header">
+<header id="header" class="glass-header">
     <div class="container">
         <div class="header-content">
-            <a href="#" class="logo">BTN<span>MFG</span></a>
+            <a href="#" class="logo">
+                <img src="main.png" alt="BTN Group Logo">
+            </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#products" class="nav-link">Products</a></li>
+                    <li><a href="#logistics" class="nav-link">Logistics</a></li>
+                    <li><a href="#calculator" class="nav-link">Calculator</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
         </div>
     </div>
 </header>
 
 <!-- Hero Section -->
 <section class="hero" id="home">
+    <div class="hero-image">
+        <img src="1.jpg" alt="Construction Site">
+        <div class="image-overlay"></div>
+    </div>
     <div class="container">
         <div class="hero-content">
-            <h1>Precision-Engineered Concrete Blocks</h1>
-            <p class="subtitle">Building Rwanda's future with superior quality and innovative solutions</p>
-            <div class="hero-btns">
-                <a href="#products" class="btn primary-btn">Explore Products</a>
-                <a href="#calculator" class="btn secondary-btn">Quantity Calculator</a>
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">Innovative</span>
+                    <span class="title-line">Manufacturing</span>
+                    <span class="title-line">& Logistics</span>
+                </h1>
+                <p class="hero-subtitle">End-to-end construction solutions with on-site production capabilities</p>
+                <div class="hero-btns">
+                    <a href="#products" class="btn primary-btn with-icon">
+                        <span>Explore Products</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn secondary-btn with-icon">
+                        <span>Get a Quote</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-value">12+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">250+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="scroll-down">
-        <i class="fas fa-chevron-down"></i>
+    <div class="scroll-indicator">
+        <div class="mouse">
+            <div class="wheel"></div>
+        </div>
+        <div class="arrow"></div>
     </div>
 </section>
 
 <!-- Products Section -->
-<section class="products-section" id="products">
+<section class="products-section section-padding" id="products">
     <div class="container">
         <div class="section-header">
-            <h2>Our Block Products</h2>
-            <p>Engineered for durability and performance</p>
+            <span class="section-subtitle">Our Offerings</span>
+            <h2 class="section-title">Premium Construction Materials</h2>
+            <p class="section-description">Engineered for durability and performance in Rwanda's challenging climate</p>
         </div>
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-img">
-                    <img src="1.jpg" alt="Standard Blocks">
+                <div class="product-badge">Best Seller</div>
+                <div class="product-media">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Standard Concrete Block">
+                    </div>
                 </div>
                 <div class="product-info">
-                    <h3>Standard Blocks</h3>
-                    <div class="specs">
-                        <span><i class="fas fa-ruler"></i> 400x200mm</span>
-                        <span><i class="fas fa-weight-hanging"></i> 18-22kg</span>
+                    <h3 class="product-title">Standard Blocks</h3>
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>400x200mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-weight-hanging"></i>
+                            <span>18-22kg</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>High Strength</span>
+                        </div>
                     </div>
-                    <p>Perfect for load-bearing walls with superior compressive strength.</p>
-                    <a href="#calculator" class="btn outline-btn">Calculate Quantity</a>
+                    <p class="product-description">Premium load-bearing blocks with superior compressive strength for structural walls.</p>
+                    <div class="product-actions">
+                        <a href="#calculator" class="btn outline-btn">Calculate Quantity</a>
+                        <a href="#contact" class="btn primary-btn">Contact Us</a>
+                    </div>
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-img">
-                    <img src="2.jpg" alt="Hollow Blocks">
+                <div class="product-media">
+                    <div class="product-image">
+                        <img src="2.jpg" alt="Hollow Concrete Block">
+                    </div>
                 </div>
                 <div class="product-info">
-                    <h3>Hollow Blocks</h3>
-                    <div class="specs">
-                        <span><i class="fas fa-ruler"></i> 400x200mm</span>
-                        <span><i class="fas fa-weight-hanging"></i> 12-15kg</span>
+                    <h3 class="product-title">Hollow Blocks</h3>
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>400x200mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-weight-hanging"></i>
+                            <span>12-15kg</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>Thermal Insulation</span>
+                        </div>
                     </div>
-                    <p>Lightweight with excellent thermal and sound insulation properties.</p>
-                    <a href="#calculator" class="btn outline-btn">Calculate Quantity</a>
+                    <p class="product-description">Lightweight blocks with excellent thermal and sound insulation properties.</p>
+                    <div class="product-actions">
+                        <a href="#calculator" class="btn outline-btn">Calculate Quantity</a>
+                        <a href="#contact" class="btn primary-btn">Contact Us</a>
+                    </div>
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-img">
-                    <img src="3.jpg" alt="Paving Blocks">
+                <div class="product-media">
+                    <div class="product-image">
+                        <img src="3.jpg" alt="Paving Blocks">
+                    </div>
                 </div>
                 <div class="product-info">
-                    <h3>Paving Blocks</h3>
-                    <div class="specs">
-                        <span><i class="fas fa-ruler"></i> 200x100mm</span>
-                        <span><i class="fas fa-weight-hanging"></i> 4-6kg</span>
+                    <h3 class="product-title">Paving Blocks</h3>
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>200x100mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-weight-hanging"></i>
+                            <span>4-6kg</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Weather Resistant</span>
+                        </div>
                     </div>
-                    <p>Durable and attractive solutions for driveways and walkways.</p>
-                    <a href="#calculator" class="btn outline-btn">Calculate Quantity</a>
+                    <p class="product-description">Durable and attractive paving solutions for driveways and walkways.</p>
+                    <div class="product-actions">
+                        <a href="#calculator" class="btn outline-btn">Calculate Quantity</a>
+                        <a href="#contact" class="btn primary-btn">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Logistics Section -->
+<section class="logistics-section section-padding" id="logistics">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">Our Services</span>
+            <h2 class="section-title">Integrated Logistics Solutions</h2>
+            <p class="section-description">From factory to site - seamless delivery and on-site production</p>
+        </div>
+        <div class="logistics-features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck-loading"></i>
+                </div>
+                <h3 class="feature-title">Nationwide Delivery</h3>
+                <p class="feature-description">Reliable transportation of materials to any location in Rwanda with our modern fleet.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <h3 class="feature-title">Mobile Production</h3>
+                <p class="feature-description">For large projects, we bring our manufacturing directly to your construction site.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-warehouse"></i>
+                </div>
+                <h3 class="feature-title">Just-In-Time Supply</h3>
+                <p class="feature-description">Optimized inventory management to ensure materials arrive exactly when needed.</p>
+            </div>
+        </div>
+        <div class="logistics-process">
+            <h3 class="process-title">Our End-to-End Process</h3>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Material Sourcing</h4>
+                        <p>We procure high-quality raw materials from trusted suppliers.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Quality Production</h4>
+                        <p>Manufacturing under strict quality control standards.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Flexible Delivery</h4>
+                        <p>Transport to site or establish on-site production.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Project Support</h4>
+                        <p>Continuous technical support until project completion.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,132 +267,263 @@
 </section>
 
 <!-- Calculator Section -->
-<section class="calculator-section" id="calculator">
+<section class="calculator-section section-padding" id="calculator">
     <div class="container">
-        <div class="section-header">
-            <h2>Block Quantity Calculator</h2>
-            <p>Estimate materials needed for your project</p>
-        </div>
         <div class="calculator-container">
-            <div class="calculator-form">
-                <div class="form-group">
-                    <label for="block-type">Block Type</label>
-                    <select id="block-type">
-                        <option value="standard">Standard Block</option>
-                        <option value="hollow">Hollow Block</option>
-                        <option value="paving">Paving Block</option>
-                    </select>
+
+            <div class="calculator-form-container">
+                <div class="section-header">
+                    <span class="section-subtitle">Planning Tool</span>
+                    <h2 class="section-title">Material Calculator</h2>
+                    <p class="section-description">Estimate the quantity of blocks needed for your project</p>
                 </div>
-                <div class="form-group">
-                    <label for="wall-length">Wall Length (m)</label>
-                    <input type="number" id="wall-length" value="10" min="0.1" step="0.1">
-                </div>
-                <div class="form-group">
-                    <label for="wall-height">Wall Height (m)</label>
-                    <input type="number" id="wall-height" value="2.5" min="0.1" step="0.1">
-                </div>
-                <div class="form-group">
-                    <label for="waste-factor">Waste Factor (%)</label>
-                    <input type="number" id="waste-factor" value="10" min="0" max="100">
-                </div>
-                <button id="calculate-btn" class="btn primary-btn">Calculate</button>
+                <form class="calculator-form">
+                    <div class="form-group">
+                        <label for="block-type">Block Type</label>
+                        <select id="block-type" class="form-select">
+                            <option value="standard">Standard Block (400x200mm)</option>
+                            <option value="hollow">Hollow Block (400x200mm)</option>
+                            <option value="paving">Paving Block (200x100mm)</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="wall-length">Wall Length (m)</label>
+                            <input type="number" id="wall-length" class="form-input" value="10" min="0.1" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="wall-height">Wall Height (m)</label>
+                            <input type="number" id="wall-height" class="form-input" value="2.5" min="0.1" step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="waste-factor">Waste Factor <span id="waste-percent">10%</span></label>
+                        <input type="range" id="waste-factor" class="form-range" value="10" min="0" max="30" step="1">
+                    </div>
+                    <button type="button" id="calculate-btn" class="btn primary-btn with-icon">
+                        <span>Calculate</span>
+                        <i class="fas fa-calculator"></i>
+                    </button>
+                </form>
             </div>
             <div class="calculator-results">
-                <h3>Estimation Results</h3>
+                <h3 class="results-title">Estimation Results</h3>
                 <div class="result-item">
-                    <span>Block Type:</span>
-                    <span id="result-type">Standard Block</span>
+                    <div class="result-label">Block Type</div>
+                    <div class="result-value" id="result-type">Standard Block</div>
                 </div>
                 <div class="result-item">
-                    <span>Wall Area:</span>
-                    <span id="result-area">25 m²</span>
+                    <div class="result-label">Wall Area</div>
+                    <div class="result-value" id="result-area">25 m²</div>
                 </div>
                 <div class="result-item">
-                    <span>Blocks Needed:</span>
-                    <span id="result-blocks">313</span>
+                    <div class="result-label">Blocks Needed</div>
+                    <div class="result-value" id="result-blocks">313</div>
                 </div>
-                <div class="result-item">
-                    <span>Including Waste:</span>
-                    <span id="result-total">344 blocks</span>
+                <div class="result-item highlight">
+                    <div class="result-label">Total Including Waste</div>
+                    <div class="result-value" id="result-total">344 blocks</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- About Section -->
-<section class="about-section" id="about">
+<!-- Projects Section -->
+<section class="projects-section section-padding" id="projects">
     <div class="container">
-        <div class="about-content">
-            <div class="about-text">
-                <div class="section-header">
-                    <h2>About BTN Manufacturing</h2>
-                    <p>Precision. Quality. Innovation.</p>
+        <div class="section-header">
+            <span class="section-subtitle">Our Work</span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-description">See how we've helped build Rwanda's infrastructure</p>
+        </div>
+        <div class="projects-slider swiper">
+            <div class="swiper-wrapper">
+                <div class="project-slide swiper-slide">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="2.jpg" alt="Kigali Commercial Complex">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Kigali Commercial Complex</h3>
+                            <div class="project-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Kigali
+                                    </span>
+                                <span class="meta-item">
+                                        <i class="fas fa-cubes"></i>
+                                        25,000 blocks
+                                    </span>
+                            </div>
+                            <p class="project-description">Provided complete materials and logistics for this 8-story mixed-use development.</p>
+                        </div>
+                    </div>
                 </div>
-                <p>Since 2010, BTN Manufacturing has been at the forefront of concrete block production in Rwanda. Our commitment to quality and innovation has made us the preferred choice for builders and contractors nationwide.</p>
-                <p>Using state-of-the-art German manufacturing technology, we produce blocks with consistent quality and precise dimensions that meet international standards.</p>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-number">12,000+</span>
-                        <span class="stat-label">Blocks Daily</span>
+                <div class="project-slide swiper-slide">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="3.jpg" alt="Rural School Project">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Rural School Project</h3>
+                            <div class="project-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Northern Province
+                                    </span>
+                                <span class="meta-item">
+                                        <i class="fas fa-cubes"></i>
+                                        8,000 blocks
+                                    </span>
+                            </div>
+                            <p class="project-description">Mobile production unit established to manufacture blocks locally for this community project.</p>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Client Retention</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Support</span>
+                </div>
+                <div class="project-slide swiper-slide">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="1.jpg" alt="Residential Estate">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Luxury Residential Estate</h3>
+                            <div class="project-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Kigali Heights
+                                    </span>
+                                <span class="meta-item">
+                                        <i class="fas fa-cubes"></i>
+                                        42,000 blocks
+                                    </span>
+                            </div>
+                            <p class="project-description">Custom block manufacturing to meet architectural specifications for high-end homes.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section section-padding" id="about">
+    <div class="container">
+        <div class="about-container">
+            <div class="about-content">
+                <div class="section-header">
+                    <span class="section-subtitle">Our Story</span>
+                    <h2 class="section-title">Building Rwanda's Future</h2>
+                    <p class="section-description">Combining manufacturing excellence with logistics innovation</p>
+                </div>
+                <div class="about-text">
+                    <p>Founded in 2010, BTN Group has grown from a small concrete block manufacturer to Rwanda's leading integrated construction solutions provider. Our unique combination of manufacturing capabilities and logistics expertise allows us to deliver unparalleled value to projects of all scales.</p>
+                    <p>What sets us apart is our ability to establish temporary production facilities at large project sites, reducing transportation costs and ensuring fresh materials are always available.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>ISO 9001 Certified Manufacturing</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Fleet of 25 Modern Trucks</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>3 Mobile Production Units</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-actions">
+                    <a href="#contact" class="btn primary-btn with-icon">
+                        <span>Contact Us</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a0a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="BTN Manufacturing Facility">
+                <div class="image-container">
+                    <img src="2.jpg" alt="BTN Manufacturing Facility" class="main-image">
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Contact Section -->
-<section class="contact-section" id="contact">
+<section class="contact-section section-padding" id="contact">
     <div class="container">
-        <div class="contact-content">
+        <div class="contact-container">
             <div class="contact-info">
-                <h2>SHOOT US A MESSAGE</h2>
-                <p class="subtitle">Let's bring your vision to life.</p>
-                <div class="address">
-                    <p>123, avenue</p>
-                    <p>Kigali, Rwanda</p>
-                    <p>94401</p>
+                <div class="section-header">
+                    <span class="section-subtitle">Get in Touch</span>
+                    <h2 class="section-title">Let's Build Together</h2>
+                    <p class="section-description">Contact us for quotes, technical support, or to discuss your project needs</p>
                 </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Headquarters</h4>
+                            <p>KG 123 St, Kigali, Rwanda</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+250 788 123 456</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@btn-group.rw</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="contact-form">
-                <form id="message-form">
+            <div class="contact-form-container">
+                <form id="contact-form" class="contact-form">
                     <div class="form-row">
                         <div class="form-group">
-                            <input type="text" id="name" placeholder="Name *" required>
-                            <div class="underline"></div>
+                            <input type="text" id="name" class="form-input" placeholder=" " required>
+                            <label for="name">Full Name *</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" placeholder="Email *" required>
-                            <div class="underline"></div>
+                            <input type="email" id="email" class="form-input" placeholder=" " required>
+                            <label for="email">Email Address *</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="tel" id="phone" class="form-input" placeholder=" ">
+                            <label for="phone">Phone Number</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" class="form-input" placeholder=" ">
+                            <label for="subject">Subject</label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="subject" placeholder="Subject">
-                        <div class="underline"></div>
+                        <textarea id="message" class="form-textarea" placeholder=" " required></textarea>
+                        <label for="message">Your Message *</label>
                     </div>
-                    <div class="form-group">
-                        <textarea id="message" placeholder="Message" required></textarea>
-                        <div class="underline"></div>
-                    </div>
-                    <button type="submit" class="btn primary-btn">Send</button>
+                    <button type="submit" class="btn primary-btn with-icon">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </form>
             </div>
         </div>
@@ -233,21 +531,52 @@
 </section>
 
 <!-- Footer -->
-<footer>
+<footer class="footer">
     <div class="container">
         <div class="footer-content">
-            <div class="copyright">
-                <p>&copy; <span id="current-year"></span> BTN Manufacturing. All rights reserved.</p>
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="Icon.png" alt="BTN Group Logo">
+                </div>
+                <p class="footer-about">Rwanda's leading integrated manufacturing and logistics solution for the construction industry.</p>
             </div>
-            <div class="footer-links">
+            <div class="footer-column">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#logistics">Logistics</a></li>
+                    <li><a href="#calculator">Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Contact Info</h4>
+                <address class="footer-address">
+                    <p><i class="fas fa-map-marker-alt"></i> KG 123 St, Kigali, Rwanda</p>
+                    <p><i class="fas fa-phone-alt"></i> +250 788 123 456</p>
+                    <p><i class="fas fa-envelope"></i> info@btn-group.rw</p>
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; <span id="current-year"></span> BTN Group. All rights reserved.
+            </div>
+            <div class="footer-legal">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
             </div>
         </div>
     </div>
 </footer>
 
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
