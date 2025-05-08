@@ -353,7 +353,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 999;
             transition: var(--transition);
         }
 
@@ -388,6 +388,7 @@
         .main-nav ul {
             display: flex;
             gap: 30px;
+            z-index: 999;
         }
 
         .nav-link {
@@ -395,6 +396,7 @@
             color: var(--text-color);
             position: relative;
             padding: 8px 0;
+            z-index: 999;
             transition: var(--transition);
         }
 
@@ -444,6 +446,7 @@
             background-color: var(--text-color);
             transition: var(--transition);
             transform-origin: left center;
+            z-index: 999;
         }
 
         .mobile-menu-btn.active .hamburger span:nth-child(1) {
@@ -457,6 +460,51 @@
         .mobile-menu-btn.active .hamburger span:nth-child(3) {
             transform: rotate(-45deg);
         }
+
+/* Mobile Menu Fix */
+@media (max-width: 768px) {
+    /* Make sure mobile menu covers everything */
+    .main-nav.active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1000; /* Higher than hero's z-index */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    /* Hide hero content when menu is open */
+    body.menu-open .hero {
+        visibility: hidden;
+    }
+
+    /* Mobile menu links styling */
+    .main-nav.active ul {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .main-nav.active .nav-link {
+        font-size: 1.5rem;
+        color: white;
+        padding: 10px 20px;
+    }
+
+    /* Ensure mobile menu button stays on top */
+    .mobile-menu-btn {
+        z-index: 1001;
+    }
+}
+
+
 
         /* Hero Section */
         .hero {
@@ -2147,35 +2195,46 @@
             }, 500);
         });
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.querySelector('.main-nav');
-        const body = document.body;
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mainNav = document.querySelector('.main-nav');
+const body = document.body;
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenuBtn.classList.toggle('active');
-            mainNav.classList.toggle('active');
-            body.classList.toggle('no-scroll');
-        });
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    mainNav.classList.toggle('active');
+    body.classList.toggle('menu-open');
+});
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuBtn.classList.remove('active');
-                mainNav.classList.remove('active');
-                body.classList.remove('no-scroll');
-            });
-        });
+// Close menu when clicking a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            mobileMenuBtn.classList.remove('active');
+            mainNav.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
+});
 
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+// Close menu when clicking outside
+mainNav.addEventListener('click', (e) => {
+    if (e.target === mainNav) {
+        mobileMenuBtn.classList.remove('active');
+        mainNav.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+});
+
+// Header scroll effect (unchanged)
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
