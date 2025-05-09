@@ -6,6 +6,9 @@
     <title>BTN Group | Manufacturing & Logistics Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
         /* Base Styles & Variables */
         :root {
@@ -22,7 +25,7 @@
             --light-color: #f8fafc;
             --white: #ffffff;
             --black: #000000;
-            --success-color: #10b981;
+            --success-color: #0C234B;
             --error-color: #ef4444;
             --warning-color: #f59e0b;
             --info-color: #3b82f6;
@@ -64,6 +67,7 @@
             background-color: var(--bg-color);
             transition: var(--transition);
             overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed header */
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -349,16 +353,23 @@
 
         /* Header */
         .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 999;
-            transition: var(--transition);
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Increased z-index to ensure it stays on top */
+    transition: var(--transition);
+    background-color: #0C234B; /* Moved from .glass-header to always have a background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
 
+.header.scrolled {
+    background-color: rgba(12, 35, 75, 0.95); /* Slightly more opaque when scrolled */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
         .glass-header {
-            background-color: var(--header-bg);
+            background-color: #0C234B;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -377,7 +388,7 @@
         }
 
         .logo img {
-            height: 40px;
+            height: 80px;
             width: auto;
         }
 
@@ -407,7 +418,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--secondary-color);
+            background-color: #1C39BB;
             transition: var(--transition);
         }
 
@@ -807,7 +818,7 @@
             justify-content: center;
             margin: 0 auto 20px;
             font-size: 24px;
-            color: var(--primary-color);
+            color: #1C39BB;
         }
 
         .feature-title {
@@ -848,7 +859,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: var(--primary-color);
+            background-color: #1C39BB;
             color: var(--white);
             display: flex;
             align-items: center;
@@ -892,7 +903,7 @@
         }
 
         .calculator-results {
-            background-color: var(--primary-color);
+            background-color: #1C39BB;
             color: var(--white);
             padding: 30px;
             border-radius: var(--border-radius-lg);
@@ -1216,7 +1227,7 @@
 
         /* Contact Section (as Footer) */
 .contact-section {
-    background-color: var(--footer-bg);
+    background-color: #0C234B;
     padding: 100px 0 50px;
     position: relative;
 }
@@ -1233,11 +1244,11 @@
 }
 
 .contact-logo {
-    margin-bottom: 30px;
+    margin-bottom: 80px;
 }
 
 .contact-logo img {
-    height: 50px;
+    height: 80px;
     width: auto;
 }
 
@@ -1538,7 +1549,7 @@
 </div>
 
 <!-- Header -->
-<header id="header" class="glass-header">
+<header id="header" class="header">
     <div class="container">
         <div class="header-content">
             <a href="#" class="logo">
@@ -2187,16 +2198,29 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Preloader
+        // Register GSAP plugins
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ======================
+        // PRELOADER ANIMATION
+        // ======================
         const preloader = document.querySelector('.preloader');
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.classList.add('fade-out');
-            }, 500);
+        gsap.to(preloader, {
+            opacity: 0,
+            duration: 0.8,
+            delay: 0.5,
+            ease: "power2.out",
+            onComplete: () => {
+                preloader.style.display = 'none';
+                // Init animations after preloader hides
+                initPageAnimations();
+            }
         });
 
-// Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        // ======================
+        // MOBILE MENU TOGGLE
+        // ======================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mainNav = document.querySelector('.main-nav');
 const body = document.body;
 
@@ -2216,8 +2240,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
         }
     });
 });
-
-// Close menu when clicking outside
+        // ======================
+        // NAVIGATION
+        // ======================
+        // Close menu when clicking outside
 mainNav.addEventListener('click', (e) => {
     if (e.target === mainNav) {
         mobileMenuBtn.classList.remove('active');
@@ -2226,48 +2252,67 @@ mainNav.addEventListener('click', (e) => {
     }
 });
 
-// Header scroll effect (unchanged)
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+        // ======================
+        // HEADER EFFECTS
+        // ======================
+        const header = document.getElementById('header');
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+        // Always show header (remove scroll effect)
+        header.style.transform = 'translateY(0)';
+
+        // Add hover animation to logo
+        const logo = document.querySelector('.logo img');
+        logo.addEventListener('mouseenter', () => {
+            gsap.to(logo, {
+                scale: 1.05,
+                duration: 0.3,
+                ease: "elastic.out(1, 0.5)"
+            });
+        });
+        logo.addEventListener('mouseleave', () => {
+            gsap.to(logo, {
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out"
             });
         });
 
-        // Back to Top Button
+        // ======================
+        // BACK TO TOP BUTTON
+        // ======================
         const backToTopBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
+
+        ScrollTrigger.create({
+            onUpdate: (self) => {
+                if (self.direction === -1 && self.scroll() > 300) {
+                    gsap.to(backToTopBtn, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                } else if (self.direction === 1 || self.scroll() <= 300) {
+                    gsap.to(backToTopBtn, {
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                }
             }
         });
 
         backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            gsap.to(window, {
+                scrollTo: 0,
+                duration: 1.2,
+                ease: "power3.inOut"
             });
         });
 
-        // Initialize Swiper sliders
+        // ======================
+        // SWIPER SLIDER
+        // ======================
         const projectsSlider = new Swiper('.projects-slider', {
             slidesPerView: 1,
             spaceBetween: 20,
@@ -2286,10 +2331,26 @@ window.addEventListener('scroll', () => {
                 992: {
                     slidesPerView: 3,
                 }
+            },
+            on: {
+                init: function() {
+                    gsap.fromTo('.swiper-slide',
+                        { opacity: 0, y: 30 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.8,
+                            stagger: 0.15,
+                            ease: "back.out"
+                        }
+                    );
+                }
             }
         });
 
-        // Block Calculator Functionality
+        // ======================
+        // BLOCK CALCULATOR
+        // ======================
         const blockTypeSelect = document.getElementById('block-type');
         const wallLengthInput = document.getElementById('wall-length');
         const wallHeightInput = document.getElementById('wall-height');
@@ -2304,50 +2365,61 @@ window.addEventListener('scroll', () => {
 
         // Update waste percentage display
         wasteFactorInput.addEventListener('input', () => {
-            wastePercent.textContent = `${wasteFactorInput.value}%`;
+            gsap.to(wastePercent, {
+                scale: 1.1,
+                duration: 0.2,
+                yoyo: true,
+                repeat: 1,
+                ease: "power1.inOut",
+                onComplete: () => {
+                    wastePercent.textContent = `${wasteFactorInput.value}%`;
+                }
+            });
         });
 
-        // Calculate blocks function
+        // Calculate blocks with animation
         function calculateBlocks() {
             const blockType = blockTypeSelect.value;
             const length = parseFloat(wallLengthInput.value) || 0;
             const height = parseFloat(wallHeightInput.value) || 0;
             const wasteFactor = parseFloat(wasteFactorInput.value) || 0;
 
-            // Calculate wall area in square meters
+            // Calculate wall area
             const area = length * height;
 
-            // Blocks per square meter based on block type
-            let blocksPerSqm;
-            let blockName;
-
+            // Blocks per square meter
+            let blocksPerSqm, blockName;
             switch(blockType) {
-                case 'standard':
-                    blocksPerSqm = 12.5; // 400x200mm blocks
-                    blockName = 'Standard Blocks';
-                    break;
-                case 'hollow':
-                    blocksPerSqm = 12.5; // 400x200mm blocks
-                    blockName = 'Hollow Blocks';
-                    break;
-                case 'paving':
-                    blocksPerSqm = 50; // 200x100mm pavers
-                    blockName = 'Paving Blocks';
-                    break;
-                default:
-                    blocksPerSqm = 12.5;
-                    blockName = 'Blocks';
+                case 'standard': blocksPerSqm = 12.5; blockName = 'Standard Blocks'; break;
+                case 'hollow': blocksPerSqm = 12.5; blockName = 'Hollow Blocks'; break;
+                case 'paving': blocksPerSqm = 50; blockName = 'Paving Blocks'; break;
+                default: blocksPerSqm = 12.5; blockName = 'Blocks';
             }
 
-            // Calculate total blocks needed
+            // Calculate totals
             const blocksNeeded = Math.ceil(area * blocksPerSqm);
             const totalWithWaste = Math.ceil(blocksNeeded * (1 + wasteFactor/100));
 
-            // Update results
-            resultType.textContent = blockName;
-            resultArea.textContent = area.toFixed(1) + ' m²';
-            resultBlocks.textContent = blocksNeeded;
-            resultTotal.textContent = totalWithWaste + ' blocks';
+            // Animate results
+            gsap.to([resultType, resultArea, resultBlocks, resultTotal], {
+                opacity: 0,
+                y: -10,
+                duration: 0.2,
+                onComplete: () => {
+                    resultType.textContent = blockName;
+                    resultArea.textContent = area.toFixed(1) + ' m²';
+                    resultBlocks.textContent = blocksNeeded;
+                    resultTotal.textContent = totalWithWaste + ' blocks';
+
+                    gsap.to([resultType, resultArea, resultBlocks, resultTotal], {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.4,
+                        stagger: 0.1,
+                        ease: "back.out"
+                    });
+                }
+            });
         }
 
         // Initial calculation
@@ -2358,9 +2430,22 @@ window.addEventListener('scroll', () => {
             input.addEventListener('input', calculateBlocks);
         });
 
-        calculateBtn.addEventListener('click', calculateBlocks);
+        // Button animation
+        calculateBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            gsap.to(calculateBtn, {
+                scale: 0.95,
+                duration: 0.1,
+                yoyo: true,
+                repeat: 1,
+                ease: "power1.inOut",
+                onComplete: calculateBlocks
+            });
+        });
 
-        // Project Modals
+        // ======================
+        // PROJECT MODALS
+        // ======================
         const projectSlides = document.querySelectorAll('.project-slide');
         const modals = document.querySelectorAll('.project-modal');
 
@@ -2368,9 +2453,27 @@ window.addEventListener('scroll', () => {
             slide.addEventListener('click', () => {
                 const projectId = slide.getAttribute('data-project');
                 const modal = document.getElementById(`projectModal${projectId}`);
+
                 if (modal) {
-                    modal.classList.add('active');
                     body.classList.add('no-scroll');
+
+                    // Animate modal in
+                    gsap.to(modal, {
+                        opacity: 1,
+                        visibility: 'visible',
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+
+                    gsap.fromTo('.modal-content',
+                        { y: 50, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.6,
+                            ease: "back.out"
+                        }
+                    );
                 }
             });
         });
@@ -2380,49 +2483,141 @@ window.addEventListener('scroll', () => {
             const closeBtn = modal.querySelector('.modal-close');
 
             closeBtn.addEventListener('click', () => {
-                modal.classList.remove('active');
-                body.classList.remove('no-scroll');
+                gsap.to(modal, {
+                    opacity: 0,
+                    visibility: 'hidden',
+                    duration: 0.3,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        body.classList.remove('no-scroll');
+                    }
+                });
             });
 
-            // Close when clicking outside modal content
+            // Close when clicking outside
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
-                    modal.classList.remove('active');
-                    body.classList.remove('no-scroll');
+                    gsap.to(modal, {
+                        opacity: 0,
+                        visibility: 'hidden',
+                        duration: 0.3,
+                        ease: "power2.in",
+                        onComplete: () => {
+                            body.classList.remove('no-scroll');
+                        }
+                    });
                 }
             });
         });
 
-        // Form submission
+        // ======================
+        // FORM SUBMISSION
+        // ======================
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
 
-                // Simulate form submission
                 const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.querySelector('span').textContent;
+                const btnText = submitBtn.querySelector('span');
+                const originalText = btnText.textContent;
 
-                submitBtn.disabled = true;
-                submitBtn.querySelector('span').textContent = 'Sending...';
+                // Animate button press
+                gsap.to(submitBtn, {
+                    scale: 0.95,
+                    duration: 0.2,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        submitBtn.disabled = true;
+                        btnText.textContent = 'Sending...';
 
-                setTimeout(() => {
-                    submitBtn.querySelector('span').textContent = 'Message Sent!';
-                    submitBtn.classList.remove('primary-btn');
-                    submitBtn.classList.add('success-btn');
+                        // Simulate API call
+                        gsap.delayedCall(1.5, () => {
+                            gsap.to(submitBtn, {
+                                backgroundColor: '#10b981',
+                                duration: 0.3,
+                                onComplete: () => {
+                                    btnText.textContent = 'Message Sent!';
 
-                    setTimeout(() => {
-                        submitBtn.querySelector('span').textContent = originalText;
-                        submitBtn.classList.remove('success-btn');
-                        submitBtn.classList.add('primary-btn');
-                        submitBtn.disabled = false;
-                        contactForm.reset();
-                    }, 3000);
-                }, 1500);
+                                    // Reset after delay
+                                    gsap.delayedCall(2, () => {
+                                        gsap.to(submitBtn, {
+                                            backgroundColor: '#3b82f6',
+                                            scale: 1,
+                                            duration: 0.3,
+                                            onComplete: () => {
+                                                btnText.textContent = originalText;
+                                                submitBtn.disabled = false;
+                                                contactForm.reset();
+                                            }
+                                        });
+                                    });
+                                }
+                            });
+                        });
+                    }
+                });
             });
         }
 
-        // Set current year in footer
+        // ======================
+        // PAGE ANIMATIONS
+        // ======================
+        function initPageAnimations() {
+            // Animate sections on scroll
+            gsap.utils.toArray('section').forEach((section, i) => {
+                gsap.from(section, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.8,
+                    delay: i * 0.1,
+                    ease: "back.out",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    }
+                });
+            });
+
+            // Animate cards
+            gsap.utils.toArray('.product-card, .feature-card').forEach((card, i) => {
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.6,
+                    delay: i * 0.1,
+                    ease: "back.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    }
+                });
+            });
+
+            // Nav link hover effects
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    gsap.to(link, {
+                        scale: 1.05,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+                link.addEventListener('mouseleave', () => {
+                    gsap.to(link, {
+                        scale: 1,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        }
+
+        // ======================
+        // FOOTER
+        // ======================
         document.getElementById('current-year').textContent = new Date().getFullYear();
     });
 </script>
