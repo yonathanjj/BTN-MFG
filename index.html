@@ -879,101 +879,130 @@
 }
 
         /* Logistics Section */
-        .logistics-section {
-            background-color: var(--card-bg);
-            position: relative;
-        }
+.logistics-section {
+    background-color: var(--card-bg);
+    position: relative;
+}
 
-        .logistics-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
+.logistics-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
 
-        .feature-card {
-            background-color: var(--bg-color);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--box-shadow);
-        }
+.feature-card {
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--box-shadow-lg);
-        }
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--box-shadow-lg);
+}
 
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: rgba(37, 99, 235, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 24px;
-            color: #1C39BB;
-        }
+.feature-image {
+    height: 180px;
+    overflow: hidden;
+}
 
-        .feature-title {
-            font-size: 1.25rem;
-            margin-bottom: 15px;
-        }
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
 
-        .feature-description {
-            font-size: 15px;
-            color: var(--text-light);
-        }
+.feature-card:hover .feature-image img {
+    transform: scale(1.05);
+}
 
-        .logistics-process {
-            background-color: var(--bg-color);
-            border-radius: var(--border-radius-lg);
-            padding: 40px;
-            box-shadow: var(--box-shadow);
-        }
+.feature-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
 
-        .process-title {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            text-align: center;
-        }
+.feature-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--heading-color);
+}
 
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
+.feature-description {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
 
-        .process-step {
-            display: flex;
-            gap: 15px;
-        }
+.logistics-process {
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius-lg);
+    padding: 40px;
+    box-shadow: var(--box-shadow);
+}
 
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #1C39BB;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
+.process-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--heading-color);
+}
 
-        .step-content h4 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
 
-        .step-content p {
-            font-size: 14px;
-            color: var(--text-light);
-        }
+.process-step {
+    display: flex;
+    gap: 15px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #1C39BB;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--heading-color);
+}
+
+.step-content p {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .logistics-features {
+        grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+
 
         /* Calculator Section */
         .calculator-section {
@@ -1867,25 +1896,31 @@
         </div>
         <div class="logistics-features">
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-truck-loading"></i>
+                <div class="feature-image">
+                    <img src="2.jpg" alt="Nationwide Delivery">
                 </div>
-                <h3 class="feature-title">Nationwide Delivery</h3>
-                <p class="feature-description">Reliable transportation of materials to any location in Rwanda with our modern fleet.</p>
+                <div class="feature-content">
+                    <h3 class="feature-title">Nationwide Delivery</h3>
+                    <p class="feature-description">Reliable transportation of materials to any location in Rwanda with our modern fleet.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-industry"></i>
+                <div class="feature-image">
+                    <img src="1.jpg" alt="Mobile Production">
                 </div>
-                <h3 class="feature-title">Mobile Production</h3>
-                <p class="feature-description">For large projects, we bring our manufacturing directly to your construction site.</p>
+                <div class="feature-content">
+                    <h3 class="feature-title">Mobile Production</h3>
+                    <p class="feature-description">For large projects, we bring our manufacturing directly to your construction site.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-warehouse"></i>
+                <div class="feature-image">
+                    <img src="3.jpg" alt="Just-In-Time Supply">
                 </div>
-                <h3 class="feature-title">Just-In-Time Supply</h3>
-                <p class="feature-description">Optimized inventory management to ensure materials arrive exactly when needed.</p>
+                <div class="feature-content">
+                    <h3 class="feature-title">Just-In-Time Supply</h3>
+                    <p class="feature-description">Optimized inventory management to ensure materials arrive exactly when needed.</p>
+                </div>
             </div>
         </div>
         <div class="logistics-process">
