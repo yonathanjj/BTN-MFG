@@ -1,0 +1,6 @@
+# Allow all web crawlers to access all content
+User-agent: *
+Disallow:
+
+# Location of sitemap file
+Sitemap: https://www.btnlimited.com/sitemap.xml
