@@ -2490,29 +2490,29 @@
                 </div>
             </div>
             <div class="contact-form-container">
-                <form id="contact-form" class="contact-form">
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/mzzvobbr" method="POST">
                     <div class="form-row">
                         <div class="form-group">
-                            <input type="text" id="name" class="form-input" placeholder=" " required>
+                            <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
                             <label for="name">Full Name *</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" class="form-input" placeholder=" " required>
+                            <input type="email" id="email" name="_replyto" class="form-input" placeholder=" " required>
                             <label for="email">Email Address *</label>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <input type="tel" id="phone" class="form-input" placeholder=" ">
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder=" ">
                             <label for="phone">Phone Number</label>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" class="form-input" placeholder=" ">
+                            <input type="text" id="subject" name="subject" class="form-input" placeholder=" ">
                             <label for="subject">Subject</label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" class="form-textarea" placeholder=" " required></textarea>
+                        <textarea id="message" name="message" class="form-textarea" placeholder=" " required></textarea>
                         <label for="message">Your Message *</label>
                     </div>
                     <button type="submit" class="btn primary-btn with-icon">
@@ -2521,6 +2521,7 @@
                     </button>
                 </form>
             </div>
+
         </div>
         <div class="copyright">
             © <span id="current-year"></span> BTN Limited. All rights reserved. | <a href="/privacy-policy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a>
